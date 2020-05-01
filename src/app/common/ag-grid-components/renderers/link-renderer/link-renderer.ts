@@ -8,8 +8,8 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 })
 export class LinkRenderer implements ICellRendererAngularComp {
   private params: ICellRendererParams;
-  private text: string;
-  private link: string;
+  public text: string;
+  public link: string;
 
   public agInit(params: ICellRendererParams ): void {
     this.params = params;

@@ -7,7 +7,7 @@ import {UpdateService} from '../../../../services/update.service';
 })
 export class CheckBoxHeader implements OnInit {
   private params: any;
-  private isChecked = false;
+  public isChecked = false;
   constructor(private updateService: UpdateService) {
   }
   ngOnInit(): void {

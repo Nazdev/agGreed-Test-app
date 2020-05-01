@@ -10,7 +10,7 @@ import { GridColumnsDefinitionService } from '../../../../services/columns-defin
 export class CustomStatsToolPanel implements IToolPanel {
   private params: IToolPanelParams;
   public totalRecordsCount: number;
-  private selectedRowsCount: number;
+  public selectedRowsCount: number;
   private selectionModeOn: boolean;
 
   constructor(private gridColumnsDefinitionService: GridColumnsDefinitionService) { }

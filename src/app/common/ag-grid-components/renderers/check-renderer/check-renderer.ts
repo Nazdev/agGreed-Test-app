@@ -8,7 +8,7 @@ import {UpdateService} from '../../../../../services/update.service';
   template: `<input type="checkbox" [checked]="params.node['selected']" (change)="checkValue($event)" />`
 })
 export class CheckRenderer implements ICellRendererAngularComp {
-  private params: ICellRendererParams;
+  public params: ICellRendererParams;
   public isChecked = false;
   public arrayListCheckbox: Array<boolean>;
 

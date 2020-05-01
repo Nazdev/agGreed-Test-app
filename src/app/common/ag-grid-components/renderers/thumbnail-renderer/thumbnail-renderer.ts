@@ -9,7 +9,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 export class ThumbnailRenderer implements ICellRendererAngularComp {
   constructor() {}
   private params: ICellRendererParams;
-  private imgSrc: string;
+  public imgSrc: string;
 
   public agInit(params: ICellRendererParams ): void {
     this.params = params;
