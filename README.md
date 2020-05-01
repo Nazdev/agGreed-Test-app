@@ -1,6 +1,21 @@
-# AgGreedAppTest
+# agGrid Test app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+Features:
+- Fetch data from open API (Youtube).
+- Display:
+-         "thumbnails" (default) as an image (no Column name)"
+          "publishedAt" as "Published on"
+          "title" as "Video Title"
+          "description" as "Description"
+          
+- Create a Toolbar.
+-         "Button to toggle Selection mode in agGrid"
+          "Total count of records in the grid"
+          "Selected records count"
+- Create a custom header “Select/Unselect All”.
+- Added  item menu “Open in new tab” ONLY “Video Title”.
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version ~8.3.24.
 
 ## Development server
 
