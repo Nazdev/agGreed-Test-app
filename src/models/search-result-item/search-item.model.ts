@@ -1,4 +1,4 @@
 export interface SearchResultItemTitleModel {
-  text: string,
-  link: string
+  text: string;
+  link: string;
 }

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CheckBoxHeader } from './checkbox-header';
+import { CheckBoxHeaderComponent } from './checkbox-header';
 
 @NgModule({
-  declarations: [CheckBoxHeader],
-  entryComponents: [CheckBoxHeader],
-  exports: [CheckBoxHeader],
+  declarations: [CheckBoxHeaderComponent],
+  entryComponents: [CheckBoxHeaderComponent],
+  exports: [CheckBoxHeaderComponent],
 })
 
 export class CheckBoxHeaderModule {

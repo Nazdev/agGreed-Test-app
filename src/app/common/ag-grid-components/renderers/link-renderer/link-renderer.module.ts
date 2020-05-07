@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { LinkRenderer } from './link-renderer';
+import { LinkRendererComponent } from './link-renderer';
 
   @NgModule({
-    declarations: [LinkRenderer],
-    entryComponents: [LinkRenderer],
-    exports: [LinkRenderer],
+    declarations: [LinkRendererComponent],
+    entryComponents: [LinkRendererComponent],
+    exports: [LinkRendererComponent],
   })
 
   export class LinkRendererModule {

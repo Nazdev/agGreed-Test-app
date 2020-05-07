@@ -9,14 +9,12 @@ import { CheckRendererModule } from '../common/ag-grid-components/renderers/chec
 import { ThumbnailRendererModule } from '../common/ag-grid-components/renderers/thumbnail-renderer/thumbnail-renderer.module';
 import { CheckBoxHeaderModule } from '../common/ag-grid-components/headers/checkbox-header.module';
 import { CustomStatsToolPanelModule } from '../common/ag-grid-components/toolbar/toolbar.module';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 import { CommonModule, DatePipe } from '@angular/common';
-
 
 describe('SearchResultComponent', () => {
   let component: SearchResultComponent;
   let fixture: ComponentFixture<SearchResultComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -27,31 +25,30 @@ describe('SearchResultComponent', () => {
         ThumbnailRendererModule,
         CheckBoxHeaderModule,
         HttpClientTestingModule,
-        AgGridModule.withComponents([]),],
+        AgGridModule.withComponents([])],
       declarations: [SearchResultComponent],
-      providers: [GridColumnsDefinitionService, YoutubeApiService, DatePipe],
+      providers: [
+        YoutubeApiService,
+        GridColumnsDefinitionService,
+        DatePipe],
     })
     .compileComponents();
   }));
 
-  let service: YoutubeApiService;
-  let http: HttpTestingController;
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    service = TestBed.get(YoutubeApiService);
-    http = TestBed.get(HttpTestingController);
-  });
 
-  it('should be created api service', () => {
-    expect(service).toBeTruthy();
   });
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('should rowData length', () => {
+  //   expect(component.rowData.length).toEqual(2);
+  // });
 
   it('should have column definitions', () => {
     expect(component.columnDefs.length).toBeGreaterThan(0);
@@ -69,4 +66,32 @@ describe('SearchResultComponent', () => {
     expect(component.sideBar.toolPanels.length).toBeGreaterThan(0);
   });
 
+
+  it('should return (getContextMenuItems()) if filed == title', () => {
+    spyOn(component, 'getContextMenuItems').and.callThrough();
+    const expectedValueTitleArray = ['copy', 'copyWithHeaders', 'paste' , 'Open in new tab'];
+    expect(component.getContextMenuItems({column: {
+        getColDef: () => {
+          return  {field : 'title'};
+        }
+      }
+    }).length).toEqual(expectedValueTitleArray.length);
+  });
+
+  it('should return (getContextMenuItems()) if filed != title', () => {
+    spyOn(component, 'getContextMenuItems').and.callThrough();
+    const expectedValueNoTitleArray = ['copy', 'copyWithHeaders', 'paste'];
+    expect(component.getContextMenuItems({column: {
+        getColDef: () => {
+          return  {field : 'notTitle'};
+        }
+      }
+    }).length).toEqual(expectedValueNoTitleArray.length);
+  });
+
+  it('should run getGoogleYoutubeData', () => {
+    spyOn(component, 'getGoogleYoutubeData').and.callThrough();
+    component.getGoogleYoutubeData();
+    expect(component.getGoogleYoutubeData).toHaveBeenCalled();
+  });
 });

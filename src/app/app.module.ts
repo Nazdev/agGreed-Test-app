@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { YoutubeApiService } from '../services/youtube-api.service';
 import { GridColumnsDefinitionService } from '../services/columns-definitions.service';
 import { SearchResultModule } from './search-result/search-result.module';
-import {UpdateService} from "../services/update.service";
+import {UpdateService} from '../services/update.service';
 
 
 @NgModule({

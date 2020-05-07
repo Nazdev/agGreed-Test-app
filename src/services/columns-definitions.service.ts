@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ColumnApi } from 'ag-grid-community';
 
 @Injectable()
 export class GridColumnsDefinitionService {
-  constructor() {}
-  columnApi: ColumnApi;
-
-  setColumnApi(columnApi: ColumnApi) {
+  columnApi;
+  public setColumnApi(columnApi) {
     this.columnApi = columnApi;
   }
-  getColumnApi() {
+  public getColumnApi() {
     return this.columnApi;
   }
 }

@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { YoutubeApiService } from '../../services/youtube-api.service';
-import { CustomStatsToolPanel } from '../common/ag-grid-components/toolbar/toolbar.component';
+import { CustomStatsToolPanelComponent } from '../common/ag-grid-components/toolbar/toolbar.component';
 import { ModuleRegistry, AllModules } from '@ag-grid-enterprise/all-modules';
 import { GetContextMenuItemsParams } from 'ag-grid-community';
-import { ThumbnailRenderer } from '../common/ag-grid-components/renderers/thumbnail-renderer/thumbnail-renderer';
-import { LinkRenderer } from '../common/ag-grid-components/renderers/link-renderer/link-renderer';
-import { CheckRenderer } from '../common/ag-grid-components/renderers/check-renderer/check-renderer';
-import { CheckBoxHeader } from '../common/ag-grid-components/headers/checkbox-header';
+import { ThumbnailRendererComponent } from '../common/ag-grid-components/renderers/thumbnail-renderer/thumbnail-renderer';
+import { LinkRendererComponent } from '../common/ag-grid-components/renderers/link-renderer/link-renderer';
+import { CheckRendererComponent } from '../common/ag-grid-components/renderers/check-renderer/check-renderer';
+import { CheckBoxHeaderComponent } from '../common/ag-grid-components/headers/checkbox-header';
 import { GridColumnsDefinitionService } from '../../services/columns-definitions.service';
-import { SearchResponseModel } from '../../models/youtube-api/search/search-response.model';
 import { SearchResultItemModel } from '../../models/search-result-item/search-item-title.model';
-import { SearchResultItemTitleModel } from '../../models/search-result-item/search-item.model';
 import { DatePipe } from '@angular/common';
 ModuleRegistry.registerModules(AllModules);
-import {ProgressiveComponent} from '../../components/progressiveComponent';
+import {ProgressiveComponent} from '../../components/progressive.component';
 import '@ag-grid-enterprise/clipboard';
 import '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
 import '@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css';
@@ -37,11 +35,11 @@ export class SearchResultComponent extends ProgressiveComponent implements OnIni
   public modules: any[] = AllModules;
   public icons = { 'custom-stat': '<span class="ag-icon ag-icon-custom-stats"></span>' };
   public frameworkComponents = {
-    customStatsToolPanel: CustomStatsToolPanel,
-    thumbnailRenderer: ThumbnailRenderer,
-    linkRenderer: LinkRenderer,
-    checkRenderer: CheckRenderer,
-    checkBoxHeader: CheckBoxHeader
+    customStatsToolPanel: CustomStatsToolPanelComponent,
+    thumbnailRenderer: ThumbnailRendererComponent,
+    linkRenderer: LinkRendererComponent,
+    checkRenderer: CheckRendererComponent,
+    checkBoxHeader: CheckBoxHeaderComponent
   };
 
   public sideBar = {
@@ -64,13 +62,10 @@ export class SearchResultComponent extends ProgressiveComponent implements OnIni
   async ngOnInit() {
     await this.getGoogleYoutubeData();
   }
-  public getContextMenuItems(params: GetContextMenuItemsParams) {
+  public getContextMenuItems(params: any) {
     const defaultContextMenu: Array<any> = [
-      'copy',
-      'copyWithHeaders',
-      'paste'
+      'copy', 'copyWithHeaders', 'paste'
     ];
-
     if (params.column && params.column.getColDef().field === 'title') {
       defaultContextMenu.push({
         name: 'Open in new tab',
@@ -84,19 +79,9 @@ export class SearchResultComponent extends ProgressiveComponent implements OnIni
   public onGridReady(params) {
     this.gridColumnsDefinitionService.setColumnApi(params.columnApi);
   }
-  private async getGoogleYoutubeData(): Promise<void> {
-    this.handleObservable<any>(this.youtubeApiService.getData(), (data: SearchResponseModel) => {
-        this.rowData = data.items.map((val) => {
-          return {
-            publishedAt: val.snippet.publishedAt,
-            title: {
-              text: val.snippet.title,
-              link: `${'https://www.youtube.com/watch?v='}${val.id.videoId}`
-            } as SearchResultItemTitleModel,
-            description: val.snippet.description,
-            thumbnail: val.snippet.thumbnails.default.url
-          } as SearchResultItemModel;
-        });
+  public async getGoogleYoutubeData(): Promise<void> {
+    this.handleObservable<any>(this.youtubeApiService.getData(), (data: SearchResultItemModel[]) => {
+      this.rowData = data;
     }, error => {
       console.log(error);
     });

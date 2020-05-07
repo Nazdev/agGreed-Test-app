@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CheckRenderer } from './check-renderer';
+import { CheckRendererComponent } from './check-renderer';
 
 @NgModule({
-  declarations: [CheckRenderer],
-  entryComponents: [CheckRenderer],
-  exports: [CheckRenderer],
+  declarations: [CheckRendererComponent],
+  entryComponents: [CheckRendererComponent],
+  exports: [CheckRendererComponent],
 })
 
 export class CheckRendererModule {

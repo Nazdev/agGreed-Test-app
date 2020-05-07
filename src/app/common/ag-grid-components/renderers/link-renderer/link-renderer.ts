@@ -6,12 +6,12 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
   selector: 'app-link-cell',
   template: `<a href="{{link}}">{{text}}</a>`
 })
-export class LinkRenderer implements ICellRendererAngularComp {
-  private params: ICellRendererParams;
+export class LinkRendererComponent implements ICellRendererAngularComp {
+  public params: any;
   public text: string;
   public link: string;
 
-  public agInit(params: ICellRendererParams ): void {
+  public agInit(params: any ): void {
     this.params = params;
     this.text = this.params.value.text;
     this.link = this.params.value.link;

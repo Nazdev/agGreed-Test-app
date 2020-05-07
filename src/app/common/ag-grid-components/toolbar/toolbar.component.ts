@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IToolPanel, IToolPanelParams } from '@ag-grid-community/all-modules';
+import { IToolPanel } from '@ag-grid-community/all-modules';
 import { GridColumnsDefinitionService } from '../../../../services/columns-definitions.service';
 
 @Component({
@@ -7,17 +7,17 @@ import { GridColumnsDefinitionService } from '../../../../services/columns-defin
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class CustomStatsToolPanel implements IToolPanel {
-  private params: IToolPanelParams;
+export class CustomStatsToolPanelComponent implements IToolPanel {
+  public params: any;
   public totalRecordsCount: number;
   public selectedRowsCount: number;
-  private selectionModeOn: boolean;
+  public selectionModeOn: boolean;
 
   constructor(private gridColumnsDefinitionService: GridColumnsDefinitionService) { }
 
   public refresh(): void {}
 
-  public agInit(params: IToolPanelParams): void {
+  public agInit(params: any): void {
     this.params = params;
     this.totalRecordsCount = 0;
     this.selectedRowsCount = 0;
@@ -37,7 +37,6 @@ export class CustomStatsToolPanel implements IToolPanel {
         selectedRowsNumber++;
       }
     });
-
     this.selectedRowsCount = selectedRowsNumber;
     this.totalRecordsCount = totalRecordsNumber;
   }
@@ -45,6 +44,7 @@ export class CustomStatsToolPanel implements IToolPanel {
   public toggleSelectionMode(): void {
     if (this.selectionModeOn) {
       this.params.api.forEachNode( (rowNode) => {
+
         rowNode.selectThisNode(false);
       });
     }

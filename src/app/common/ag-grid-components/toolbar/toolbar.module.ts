@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CustomStatsToolPanel } from './toolbar.component';
-import { GridColumnsDefinitionService } from '../../../../services/columns-definitions.service';
+import { CustomStatsToolPanelComponent } from './toolbar.component';
+import {GridColumnsDefinitionService} from '../../../../services/columns-definitions.service';
 
 @NgModule({
   imports: [],
-  declarations: [CustomStatsToolPanel],
-  entryComponents:[CustomStatsToolPanel],
-  exports: [CustomStatsToolPanel],
+  declarations: [CustomStatsToolPanelComponent],
+  entryComponents: [CustomStatsToolPanelComponent],
+  exports: [CustomStatsToolPanelComponent],
   providers: [GridColumnsDefinitionService],
 })
 

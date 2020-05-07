@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import { ICellRendererParams } from 'ag-grid-community';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import {UpdateService} from '../../../../../services/update.service';
 
@@ -7,19 +6,20 @@ import {UpdateService} from '../../../../../services/update.service';
   selector: 'app-checkbox-cell',
   template: `<input type="checkbox" [checked]="params.node['selected']" (change)="checkValue($event)" />`
 })
-export class CheckRenderer implements ICellRendererAngularComp {
-  public params: ICellRendererParams;
+export class CheckRendererComponent implements ICellRendererAngularComp {
+  public params: any;
   public isChecked = false;
   public arrayListCheckbox: Array<boolean>;
 
   constructor(private updateService: UpdateService) {
   }
 
-  public agInit(params: ICellRendererParams ): void {
+  public agInit(params: any ): void {
     this.params = params;
   }
 
   public checkValue(event: any): void {
+
     this.arrayListCheckbox = [];
     this.params.node.selectThisNode(event.currentTarget.checked);
     this.isChecked = event.currentTarget.checked;
@@ -27,9 +27,9 @@ export class CheckRenderer implements ICellRendererAngularComp {
       this.arrayListCheckbox.push(rowNode['selected']);
     });
     if (this.arrayListCheckbox.every(this.checkArrayElement) === false) {
-      this.updateService.notifyOther({option: 'EventUpdateHeaderCheckbox', value:  false});
+      this.updateService.notifyHeaderCheckbox({option: 'EventUpdateHeaderCheckbox', value:  false});
     } else {
-      this.updateService.notifyOther({option: 'EventUpdateHeaderCheckbox', value:  this.isChecked});
+      this.updateService.notifyHeaderCheckbox({option: 'EventUpdateHeaderCheckbox', value:  this.isChecked});
     }
   }
   public refresh(): boolean {

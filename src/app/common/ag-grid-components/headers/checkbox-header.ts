@@ -5,8 +5,8 @@ import {UpdateService} from '../../../../services/update.service';
   selector: 'app-loading-overlay',
   templateUrl: 'checkbox-header.component.html',
 })
-export class CheckBoxHeader implements OnInit {
-  private params: any;
+export class CheckBoxHeaderComponent implements OnInit {
+  public params: any;
   public isChecked = false;
   constructor(private updateService: UpdateService) {
   }

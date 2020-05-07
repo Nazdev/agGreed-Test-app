@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { ThumbnailRenderer } from './thumbnail-renderer';
+import { ThumbnailRendererComponent } from './thumbnail-renderer';
 
 @NgModule({
-  declarations: [ThumbnailRenderer],
-  entryComponents: [ThumbnailRenderer],
-  exports: [ThumbnailRenderer],
+  declarations: [ThumbnailRendererComponent],
+  entryComponents: [ThumbnailRendererComponent],
+  exports: [ThumbnailRendererComponent],
 })
 
 export class ThumbnailRendererModule {
