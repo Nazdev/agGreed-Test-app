@@ -85,7 +85,7 @@ export class SearchResultComponent extends ProgressiveComponent implements OnIni
     this.handleObservable<any>(this.youtubeApiService.getData(), (data: SearchResultItemModel[]) => {
       this.rowData = data;
     }, error => {
-      this.showErrorAlert('HttpErrorResponse', 'The request specifies an invalid page token.');
+      this.showErrorAlert('HttpErrorResponse Error 400', 'YouTube API v3 - keyInvalid or exceeded the limit 10,000 units per day.');
       console.log(error);
     });
   }

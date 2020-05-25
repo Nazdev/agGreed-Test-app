@@ -2,7 +2,6 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-
   "projects": {
     "agGreed-app-test": {
       "projectType": "application",
@@ -23,7 +22,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -46,7 +45,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -125,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "agGreed-app-test"
+    }
+  },
+  "defaultProject": "agGreed-app-test",
+  "cli": {
+    "analytics": "b70d4df7-1bb0-4196-adcb-0a5c5a63d156"
+  }
 }

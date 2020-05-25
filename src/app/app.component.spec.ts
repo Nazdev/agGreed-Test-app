@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchResultModule } from './search-result/search-result.module';
 import { YoutubeApiService } from '../services/youtube-api.service';
 import {UpdateService} from '../services/update.service';
+import {ToastrModule} from 'ngx-toastr';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -19,7 +20,8 @@ describe('AppComponent', () => {
       imports: [
         BrowserModule,
         HttpClientModule,
-        SearchResultModule
+        SearchResultModule,
+        ToastrModule.forRoot(),
       ],
       providers: [YoutubeApiService, GridColumnsDefinitionService, UpdateService]
     }).compileComponents();

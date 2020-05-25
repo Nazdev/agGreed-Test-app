@@ -11,6 +11,7 @@ import { CheckBoxHeaderModule } from '../common/ag-grid-components/headers/check
 import { CustomStatsToolPanelModule } from '../common/ag-grid-components/toolbar/toolbar.module';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import { CommonModule, DatePipe } from '@angular/common';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 describe('SearchResultComponent', () => {
   let component: SearchResultComponent;
@@ -25,11 +26,13 @@ describe('SearchResultComponent', () => {
         ThumbnailRendererModule,
         CheckBoxHeaderModule,
         HttpClientTestingModule,
+        ToastrModule.forRoot(),
         AgGridModule.withComponents([])],
       declarations: [SearchResultComponent],
       providers: [
         YoutubeApiService,
         GridColumnsDefinitionService,
+        ToastrService,
         DatePipe],
     })
     .compileComponents();
