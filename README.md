@@ -15,7 +15,7 @@ Features:
 - Create a custom header “Select/Unselect All”.
 - Added  item menu “Open in new tab” ONLY “Video Title”.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version ~8.3.24.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version "~9.1.7".
 
 ## Deployed on:
 https://nazdev.github.io/agGreed-Test-app/
