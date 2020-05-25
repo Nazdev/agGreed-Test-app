@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
+
+// Components
 import { CustomStatsToolPanelComponent } from './toolbar.component';
+
+// Services
 import {GridColumnsDefinitionService} from '../../../../services/columns-definitions.service';
 
 @NgModule({

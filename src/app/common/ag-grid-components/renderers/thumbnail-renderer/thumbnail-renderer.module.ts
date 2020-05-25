@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+
+// Components
 import { ThumbnailRendererComponent } from './thumbnail-renderer';
 
 @NgModule({

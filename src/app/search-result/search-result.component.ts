@@ -15,6 +15,7 @@ import {ProgressiveComponent} from '../../components/progressive.component';
 import '@ag-grid-enterprise/clipboard';
 import '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
 import '@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-search-result',
@@ -55,7 +56,8 @@ export class SearchResultComponent extends ProgressiveComponent implements OnIni
     defaultToolPanel: 'customStats'
   };
 
- constructor(private youtubeApiService: YoutubeApiService, private gridColumnsDefinitionService: GridColumnsDefinitionService, private datePipe: DatePipe) {
+ constructor(private youtubeApiService: YoutubeApiService, private gridColumnsDefinitionService: GridColumnsDefinitionService,
+             private toastService: ToastrService, private datePipe: DatePipe) {
     super();
   }
 
@@ -83,9 +85,19 @@ export class SearchResultComponent extends ProgressiveComponent implements OnIni
     this.handleObservable<any>(this.youtubeApiService.getData(), (data: SearchResultItemModel[]) => {
       this.rowData = data;
     }, error => {
+      this.showErrorAlert('HttpErrorResponse', 'The request specifies an invalid page token.');
       console.log(error);
     });
   }
 
+  public showErrorAlert(title: string, message: string) {
+    this.toastService.error(message, title, {
+      timeOut: 5000,
+      positionClass: 'toast-top-full-width',
+      progressAnimation: 'decreasing',
+      progressBar: true,
+      closeButton: true
+    });
+  }
 
 }

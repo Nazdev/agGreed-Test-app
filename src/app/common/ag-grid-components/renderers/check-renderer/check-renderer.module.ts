@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+
+// Components
 import { CheckRendererComponent } from './check-renderer';
 
 @NgModule({
